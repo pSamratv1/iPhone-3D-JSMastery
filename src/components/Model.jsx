@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { Canvas, useThree } from "@react-three/fiber";
 import { Group } from "three";
 import { View } from "@react-three/drei";
-import { models } from "../constants";
+import { models, sizes } from "../constants";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -42,7 +42,7 @@ const Model = () => {
             <ModelView
               index={1}
               groupRef={small}
-              groupType="view1"
+              gsapType="view1"
               controlRef={cameraControlSmall}
               onRotationState={setSmallRotation}
               item={model}
@@ -51,7 +51,7 @@ const Model = () => {
             <ModelView
               index={2}
               groupRef={large}
-              groupType="view2"
+              gsapType="view2"
               controlRef={cameraControlLarge}
               onRotationState={setLargeRotation}
               item={model}
@@ -80,12 +80,27 @@ const Model = () => {
                 {models.map((items, idx) => (
                   <li
                     key={idx}
-                    className="w-6 h-6 rounded-full mx-2"
+                    className="w-6 h-6 rounded-full mx-2 cursor-pointer"
                     style={{ backgroundColor: items.color[0] }}
                     onClick={() => setModel(items)}
                   />
                 ))}
               </ul>
+              <button className="size-btn-container">
+                {sizes.map(({ label, value }) => (
+                  <span
+                    key={label}
+                    className="size-btn"
+                    style={{
+                      backgroundColor: size === value ? "white" : "transparent",
+                      color: size === value ? "black" : "white",
+                    }}
+                    onClick={() => setSize(value)}
+                  >
+                    {label}
+                  </span>
+                ))}
+              </button>
             </div>
           </div>
         </div>
