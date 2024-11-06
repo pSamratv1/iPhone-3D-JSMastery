@@ -1,3 +1,4 @@
+import Features from "./components/Features";
 import HeroSection from "./components/HeroSection";
 import Hightlight from "./components/Hightlight";
 import Model from "./components/Model";
@@ -10,6 +11,7 @@ const App = () => {
       <HeroSection />
       <Hightlight />
       <Model />
+      <Features />
     </main>
   );
 };
