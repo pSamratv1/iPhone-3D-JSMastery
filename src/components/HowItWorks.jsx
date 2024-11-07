@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { chipImg, frameImg, frameVideo } from "../utils";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const HowItWorks = () => {
+  const videoRef = useRef();
+
   useGSAP(() => {
     gsap.from("#chip", {
       scrollTrigger: {
@@ -38,23 +40,50 @@ const HowItWorks = () => {
           <div className="relative h-full flex-center">
             <div className="overflow-hidden">
               <img
-                className="bg-transparent relative z-10"
+                className="bg-transparent relative z-10 "
                 src={frameImg}
                 alt="frame"
               />
-              <div className="hiw-video">
-                <video
-                  className="pointer-events-none"
-                  playsInline
-                  preload="none"
-                  muted
-                  autoPlay
-                  ref={videoRef}
-                >
-                  <source src={frameVideo} type="video/mp4" />
-                </video>
-              </div>
             </div>
+            <div className="hiw-video  absolute">
+              <video
+                className="pointer-events-none"
+                playsInline
+                preload="none"
+                muted
+                autoPlay
+                ref={videoRef}
+              >
+                <source src={frameVideo} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <p className="text-center text-gray font-semibold mt-3">
+            Honkai: Star Rail
+          </p>
+          <div className="hiw-text-container">
+            <div className=" flex flex-1 flex-col justify-center">
+              <p className="hiw-text g_fadeIn">
+                A17 Pro is an entirely new class of iPhone chip that delivers
+                our{" "}
+                <span className="text-white">
+                  best graphic performance by far.
+                </span>
+              </p>
+            </div>
+
+            <p className="hiw-text g_fadeIn">
+              Mobile{" "}
+              <span className="text-white">
+                games will look and feel so immersive
+              </span>
+              with incredibly detailed environments and characters.
+            </p>
+          </div>
+          <div className="flex-1 flex-justify-center flex-col g_fadeIn">
+            <p className="hiw-text">New</p>
+            <p className="hiw-text">Pro-class GPU</p>
+            <p className="hiw-text">with 6 cores</p>
           </div>
         </div>
       </div>
