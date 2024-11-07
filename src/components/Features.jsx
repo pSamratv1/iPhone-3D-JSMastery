@@ -12,18 +12,18 @@ const Features = () => {
     gsap.to("#exporeVideo", {
       scrollTrigger: {
         trigger: "#exporeVideo",
-        toggleActions: "play pause restart reverse",
-        start: "-10% bottom",
+        toggleActions: "play pause reverse restart",
+        start: "bottom -10%",
       },
       onComplete: () => {
-        video.play();
+        videoRef.current.play();
       },
     });
     animateWithGsap("#features_title", { y: 0, opacity: 1 });
     animateWithGsap(
       ".g_grow",
       {
-        scale: 1,
+        scale: 0.8,
         opacity: 1,
         ease: "power1",
       },
@@ -67,19 +67,19 @@ const Features = () => {
               </video>
             </div>
             <div className="flex flex-col w-full relative">
-              <div className="feature-video-container">
+              <div className="feature-video-container space-x-4 ">
                 <div className="overlfow-hidden flex-1 h-[50vh]">
                   <img
                     src={explore1Img}
                     alt="titanium"
-                    className="feature-vide0 g_grow"
+                    className="feature-video g_grow"
                   />
                 </div>
-                <div className="overflow-hidden flex-1 h-[50vh]">
+                <div className="overflow-hidden flex-1 h-[40vh]">
                   <img
                     src={explore2Img}
                     alt="titanium 2"
-                    className="feature-vide0 g_grow"
+                    className="feature-video g_grow"
                   />
                 </div>
               </div>
